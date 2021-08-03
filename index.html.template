@@ -1,0 +1,13 @@
+<?php
+
+# Define settings
+$settings = array (
+	'password' => 'the_password',
+	'geocoderApiKey' => 'api_key',
+);
+
+# Load and run the catalogue viewer
+require_once ('cambridgeairphotos.php');
+new cambridgeairphotos ($settings);
+
+?>

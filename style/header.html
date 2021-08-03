@@ -7,7 +7,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-  <title>Title</title>
+  <title>{$title}</title>
   <meta name="description" content="" />
   <meta name="author" content="" />
 
@@ -29,7 +29,7 @@
 <script type="text/javascript">try { Typekit.load(); } catch(e) { } </script>
 <script type="text/javascript">  document.documentElement.className += " js";</script>
 </head>
-<body class="campl-theme-3">
+<body class="campl-theme-3 {$action}">
 	<a href="#nav" class="campl-skipTo" tabindex="1">skip to navigation</a>
 	<a href="#content" class="campl-skipTo" tabindex="2">skip to content</a>
 
@@ -58,23 +58,27 @@
 								<a href="https://www.cam.ac.uk/" class="campl-home ir">Home</a>
 							</li>
 							<li>
-								<a href="https://www.botolph.cam.ac.uk/">Department</a>
+								<a href="https://www.geog.cam.ac.uk/">Department of Geography</a>
 							</li>
 							<li>
-								<a href="/">Site name</a>
+								<a href="/">Cambridge air photos</a>
 							</li>
+							{if (isSet ($section))}
 							<li>
-								<span class="campl-current"><a href="#">Section</a></span>
+								<span class="campl-current"><a href="{$sectionHref}">{$section}</a></span>
 							</li>
+							{/if}
+							{if (isSet ($title))}
 							<li>
-								<span class="campl-current">Title</span>
+								<span class="campl-current">{$title}</span>
 							</li>
+							{/if}
 						</ul>
 					</div>
 					<!--
 					<p class="campl-mobile-parent"><a href=""><span class="campl-back-btn campl-menu-indicator"></span>Computing service</a></p>
 					-->
-                   <p class="campl-page-title"><a href="/">Title</a></p>
+					<p class="campl-page-title"><a href="/">Cambridge air photos</a></p>
 					
 				</div>
 			</div>
@@ -88,6 +92,20 @@
 
 			<ul class="campl-unstyled-list">
 				<li><span><a href="/">Home</a></span></li>
+				<li><a href="/map/">Browse the map</a></li>
+				<li><a href="/featured/">Featured images</a>
+					{$featuredListHtml}
+				</li>
+				<li><a href="/themes/">Themes</a>
+					{$themesListHtml}
+				</li>
+				<li><a href="/areas/">Areas</a></li>
+				<li><a href="/about/">About</a></li>
+				<li><a href="/search/">Search the catalogue</a></li>
+				<li><a href="/contacts/">Contact us</a></li>
+				{if ($userIsAdministrator)}
+					<li><a href="/admin.html">Admin</a></li>
+				{/if}
 			</ul>
 		</div>
 	</div>

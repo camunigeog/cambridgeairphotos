@@ -1,0 +1,84 @@
+# Cambridge air photos Apache directives
+
+# Load using:
+#	# Cambridge air photos
+#	Include /path/to/cambridgeairphotos/.httpd.conf.extract.txt
+#	Use MacroTemplateApplication "" "/path/to/cambridgeairphotos" "/path/to/site/:/path/to/cambridgeairphotos/:/path/to/php/libraries/:/path/to/smarty/"
+
+
+<Macro MacroCambridgeairphotos $baseUrl $repoPath $includePath>
+	
+	# Include path
+	<Location $baseUrl/>
+		php_value include_path $includePath
+	</Location>
+	
+	# Output buffering
+	<Location $baseUrl/>
+		php_value output_buffering 32768
+	</Location>
+	
+	# Front controller application support
+	Use MacroFrontControllerApplication "$baseUrl/" "Cambridge air photos"
+	
+	# Application routing
+	RewriteRule ^$baseUrl/(map|about|search|listing|import)/$ $baseUrl/index.html?action=$1 [L,QSA]
+	RewriteRule ^$baseUrl/(contacts)/$ $baseUrl/index.html?action=feedback [L,QSA]
+	RedirectMatch permanent ^$baseUrl/(map|about|search|beta|listing|import|contacts)$ $baseUrl/$1/
+	RewriteRule "^$baseUrl/location/([- /a-z0-9]+)/$" $baseUrl/index.html?action=location&runpage=view&id=$1 [L,QSA]
+	RewriteRule "^$baseUrl/location/([- /a-z0-9]+)/update.html$" $baseUrl/index.html?action=location&runpage=update&id=$1 [L,QSA]
+	RedirectMatch Permanent "^$baseUrl/location/([- /a-z0-9]+)$" $baseUrl/location/$1/
+	# NB \1 is a backreference in the test
+	RewriteRule "^$baseUrl/location/([- /a-z0-9]+)/\1-size([0-9]+).jpg$" $baseUrl/data/thumbnails/$2/$1.jpg [L,QSA]
+	RewriteRule ^$baseUrl/search/page([1-9][0-9]*)\.html$ $baseUrl/index.html?action=search&page=$1 [L,QSA]
+	
+	# Search
+	RewriteRule ^$baseUrl/search/results\.(csv)$ $baseUrl/index.html?action=searchExport&exportformat=$1 [L,QSA]
+	<LocationMatch ^$baseUrl/search/results\.(csv)$>
+		php_value auto_prepend_file none
+		php_value auto_append_file none
+		php_value memory_limit 200M
+	</LocationMatch>
+	
+	# Themes/areas/featured/rolls
+	RewriteRule ^$baseUrl/(areas|themes|featured|rolls)/$ $baseUrl/index.html?action=$1 [L,QSA]
+	RedirectMatch permanent ^$baseUrl/(areas|themes|featured|rolls)$ $baseUrl/$1/
+	RewriteRule ^$baseUrl/(areas|themes|featured|rolls)/([^/]+)/$ $baseUrl/index.html?action=$1&id=$2 [L,QSA]
+	RedirectMatch permanent ^$baseUrl/(areas|themes|featured|rolls)/([^/]+)$ $baseUrl/$1/$2/
+	RewriteRule ^$baseUrl/(areas|themes|featured)/([^/]+)/page1\.html$ $baseUrl/$1/$2/ [L,R=301]
+	RewriteRule ^$baseUrl/(areas|themes|featured)/([^/]+)/page([1-9][0-9]*)\.html$ $baseUrl/index.html?action=$1&id=$2&page=$3 [L,QSA]
+	
+	# Allow slashes in the database ID path, e.g. $baseUrl/location/RAF%2FA1/ for "RAF/A1"
+	AllowEncodedSlashes On
+	
+	# For IDs, redirect upper-case keys to lower-case, so these are supported for quick typing purposes; see: http://stackoverflow.com/questions/3952144
+	RewriteEngine on
+	RewriteMap lowercase int:tolower
+	RewriteCond $1 [A-Z]
+	RewriteRule "^$baseUrl/location/([- /a-zA-Z0-9]+)(/?)$" $baseUrl/location/${lowercase:$1}$2 [R=301,L]
+	
+	# Import
+	<Location $baseUrl/import/>
+		php_value memory_limit 2000M
+	</Location>
+	
+	# Shopping cart
+	RewriteRule ^$baseUrl/(basket|checkout)/$ $baseUrl/index.html?action=$1 [L]
+	RewriteRule ^$baseUrl/(basket|checkout)$ $baseUrl/$1/ [L,R]
+	
+	# API
+	<Location $baseUrl/api/>
+		php_value auto_prepend_file none
+		php_value auto_append_file none
+	</Location>
+	RewriteRule ^$baseUrl/api/v2/([a-z]+)$ $baseUrl/index.html?action=api&method=$1 [L,QSA]
+	
+	# Enable assets
+	Alias $baseUrl/cucap.css $repoPath/cucap.css
+	Alias $baseUrl/js/ $repoPath/js/
+	Alias $baseUrl/images/ $repoPath/images/
+	Alias $baseUrl/data/ $repoPath/data/
+	Alias $baseUrl/style/ $repoPath/style/
+	Alias $baseUrl/robots.txt $repoPath/robots.txt
+	
+</Macro>

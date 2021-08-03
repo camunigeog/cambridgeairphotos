@@ -1,0 +1,152 @@
+
+/* Key */
+p#key {text-align: right; float: right; margin-top: 10px; border: 1px solid #ddd; padding: 5px 20px; width: 16.5em;}
+
+/* Map layers */
+#map .leaflet-control-layers {margin-right: 160px;}
+
+#mapContainer {position: relative;}
+
+/* Main map display */
+#map {width: auto; height: 650px;}
+
+.activeArea {position: absolute; left: 0; right: 150px; height: 100%;}
+
+/* Geocoder */
+#locationfinder {position: absolute; top: 10px; left: 50px; z-index: 40; width: 250px;}
+#mapContainer input[name='location'] {font-size: 1.2em; padding: 5px; color: #603; width: 300px;}
+#mapContainer input[name='location'].ui-autocomplete-loading {background: white url('/images/loading.gif') right 5px center no-repeat;}
+
+/* Icon layer */
+.leaflet-popup-content-wrapper {width: 480px; min-height: 80px;}
+a.leaflet-popup-close-button {border: 0;}
+div.bubble {width: 440px;}
+div.bubble h3 {margin-top: 4px;}
+div.bubble table.metadata td:first-child {width: 8em;}
+div.bubble p.peekimage {float: right; margin: 0; padding: 0;}
+div.photobubble {min-height: 250px;}
+
+/* Placeholder supression control */
+p.supressplaceholders {position: absolute; top: 10px; right: 220px; padding: 8px; border-radius: 5px; box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 5px 0px; background-color: white; z-index: 50;}
+
+/* Drawing tools */
+.map-tools-overlay {position:absolute;top:0;right:0;height:100%;width:150px;background:rgba(0,0,0,0.8);z-index:1010}
+.map-tools-overlay nav ul {margin:0;padding:0;list-style-type:none;overflow:hidden}
+.map-tools-overlay nav ul li {list-style-type:none;padding:0;margin:0;border:0;float:left;display:inline}
+.map-tools-overlay nav ul li a {float:left;display:block}
+.map-tools-overlay nav ul li a {display:block;color:#e6e6e6;height:80px;width:50px;cursor:pointer;font-weight:bold;font-size:10px;text-align:center;text-transform:uppercase;letter-spacing:1px}
+.map-tools-overlay nav ul li a span {width:50px;height:50px;display:block;border:1px solid #1a1a1a;background:#e6e6e6 url(../images/geometrydrawing.png) 4px -534px no-repeat;-webkit-border-radius:8px;-moz-border-radius:8px;-ms-border-radius:8px;-o-border-radius:8px;border-radius:8px}
+.map-tools-overlay nav ul li a span.area {background-position:4px -534px}
+.map-tools-overlay nav ul li a span.route {background-position:4px -616px}
+.map-tools-overlay nav ul li a span.point {background-position:13px -706px}
+.map-tools-overlay nav ul li a:hover {text-decoration:none}
+.map-tools-overlay nav ul li a:hover span {background-color:#eee}
+.map-tools-overlay nav ul li a.current span {-webkit-box-shadow:inset rgba(0,0,0,0.7) 0 0 8px;-moz-box-shadow:inset rgba(0,0,0,0.7) 0 0 8px;box-shadow:inset rgba(0,0,0,0.7) 0 0 8px}
+.map-tools-overlay .panes {padding:10px}
+.map-tools-overlay .panes .pane h3,.map-tools-overlay .panes .pane p {color:#e6e6e6}
+.map-tools-overlay .panes .pane p {display:block;margin-bottom:10px;font-weight:normal;font-size:13px;font-style:italic}
+.map-tools-overlay ul.undo-clear {margin:0;padding:0;list-style-type:none;overflow:hidden;position:absolute;bottom:10px;left:10px}
+.map-tools-overlay ul.undo-clear li {list-style-type:none;padding:0;margin:0;border:0;float:left;display:inline}
+.map-tools-overlay ul.undo-clear li a {float:left;display:block}
+.map-tools-overlay ul.undo-clear li {float:left;margin-right:10px}
+.map-tools-overlay ul.undo-clear li a {display:block;width:80px;height:32px;cursor:pointer}
+.map-tools-overlay ul.undo-clear li a span.txt {color:#e6e6e6;float:right;margin-top:5px;font-weight:bold;font-size:10px;letter-spacing:1px;text-transform:uppercase;text-align:right}
+.map-tools-overlay ul.undo-clear li a span.icon-undo,.map-tools-overlay ul.undo-clear li a span.icon-clear {float:left;width:30px;height:30px;display:block;border:1px solid #999;background:url(../images/geometrydrawing.png) 3px -780px no-repeat;-webkit-border-radius:8px;-moz-border-radius:8px;-ms-border-radius:8px;-o-border-radius:8px;border-radius:8px}
+.map-tools-overlay ul.undo-clear li a span.icon-clear {background-position:4px -825px}
+.map-tools-overlay ul.undo-clear li a:hover {text-decoration:none}
+.map-tools-overlay ul.undo-clear li a:hover span.icon-undo,.map-tools-overlay ul.undo-clear li a:hover span.icon-clear {border:1px solid #e6e6e6}
+.map-tools-overlay a {border-bottom: 0;}
+.map-tools-overlay a:hover {background-color: transparent;}
+.map-tools-overlay nav ul li {line-height: 0.9em;}
+/* Changes from Cyclescape */
+.map-tools-overlay nav ul li a span.browse {background-position:4px -357px;}
+.map-tools-overlay {background: #000; opacity: 0.9;}
+.map-tools-overlay {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"; filter: alpha(opacity=80); -moz-opacity: 0.8; -khtml-opacity: 0.8;}	/* Vendor-specific implementations */
+.map-tools-overlay {z-index: 1011;}
+.map-tools-overlay nav ul li a {padding: 6px;}
+
+/* Location page */
+#details {float: right; width: 300px;}
+#details #mapContainer {height: 300px;}
+#details #mapContainer #map {height: 100%;}
+#details table.metadata {width: 320px; margin-bottom: 30px;}
+.noimageavailable {width: 300px; height: 75px; border: 1px dashed #ddd; padding: 10px; margin-bottom: 3em;}
+.noimageavailable p {color: #ccc;}
+p#caption {font-weight: bold; font-size: 1.4em;}
+p#photonumber a {border: 0;}
+div.nophoto span {display: block; float: right; margin-left: 20px; height: 100px; width: 200px; border: 1px solid #eee; margin-bottom: 10px; padding: 10px; font-size: 0.83em; color: #bbb;}
+.locatedPhoto {margin-bottom: 4em;}
+
+p.themes a {border: 1px solid #ddd; padding: 2px 5px; background-color: #f7f7f7;}
+p.themes a:hover {border-color: #ccc; background-color: #eee; text-decoration: none;}
+
+/* Location page - more nearby */
+/* Squares gallery; uses vertical centering technique as at: http://stackoverflow.com/a/7310398 */
+.cucapgallery {margin-top: 15px; margin-bottom: 25px;}
+.cucapgallery > div {float: left; margin-right: 10px; margin-bottom: 10px; border: 1px solid #ddd; padding: 10px; box-shadow: 5px 5px 10px #888; height: 220px; width: 220px; text-align: center; position: relative;}
+.cucapgallery > div:not(.noimage):before {content: ""; display: inline-block; height: 100%; vertical-align: middle;}
+.cucapgallery > div img, .cucapgallery > div div {vertical-align: middle; max-height: 200px; max-width: 200px; border: 0;}
+_.cucapgallery {max-width: 600px;}
+.cucapgallery {overflow: hidden; /* Clearfix */}
+_.cucapgallery.naturalwidth {max-width: 900px;}
+.cucapgallery p a {border: 0; color: black;}
+.cucapgallery p a:hover {background-color: transparent;}
+.cucapgallery p.id {position: absolute; right: 8px; top: 10px; margin: 0; font-size: 0.83em; font-weight: bold; background: white; opacity: 0.5;}
+.cucapgallery p.id a {padding: 4px 6px;}
+.cucapgallery div.noimage p.noimage a {display: block; height: 180px; width: 160px; padding: 20px 20px 0; text-align: left; color: #999;}
+.cucapgallery p.subject {position: absolute; top: 185px; padding: 2px 20px 5px; margin: 0; font-size: 0.83em; background: white; opacity: 0.8; text-align: left; font-style: italic; line-height: 1.4em;}
+.cucapgallery p.subject a {display: block; width: 180px; height: 40px;}
+.cucapgallery.compressed div {padding: 5px;}
+
+/* Update page */
+.update form table td:first-child {width: 40px;}
+
+
+/* Home page */
+/* CSS3 Multibackground; see: http://stackoverflow.com/a/17945428/180733 */
+body.home .campl-main-content {background: linear-gradient(to bottom, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.7) 100%), url('/images/background.jpg') repeat 0 0; background-size: cover;}
+body.home #introduction {margin: 10px 0 30px;}
+body.home .panel {margin-bottom: 40px; padding: 15px 20px; box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.75);}
+body.home .box {border: 1px solid #ccc; border-top-left-radius: 20px; background-color: white; width: 230px; height: 250px; float: left; margin: 0 16px 25px 0;}
+body.home .overlay {float: right; width: 490px; background-color: rgba(255,255,255,0.6); border-right: 20px solid rgba(0,0,0,0.05);}
+body.home .panel h3 {padding-top: 0; margin-bottom: 15px; font-size: 1.5em;}
+body.home .panel h3 a {color: #422e5d; display: block;}
+body.home .panel h3 a:hover {text-decoration: none;}
+body.home .panel img {border: 1px solid #ccc; width: 230px; height: 180px;}
+body.home .panel ul {list-style: none; margin: 0; padding: 0; overflow-y: scroll; height: 180px; background-color: #f3f3f3;}
+body.home .panel ul li a {color: #444; display: block; padding: 2px 6px;}
+body.home .panel ul li a span {font-size: 0.83em; margin-left: 2px; color: #aaa;}
+body.home .panel ul li a:hover {text-decoration: none; background-color: #eee; color: #422e5d;}
+body.home #search p#swatch {margin-top: 20px;}
+body.home #search img {width: 66px; height: 60px; border: 0; margin-right: 7px; margin-bottom: 12px;}
+
+
+/* Search results */
+table.searchresult tr td:first-child {width: 80px;}
+/*
+table.searchresult {table-layout: fixed; width: 100%;}
+table.searchresult tr th.subject, body.cucap-search table.searchresult tr td.subject {width: 300px;}
+table.searchresult tr th, body.cucap-search table.searchresult tr td {font-size: 0.83em;}
+*/
+
+/* Types pages */
+table.types tr td.total, table.statistics tr td.value {text-align: right;}
+ul.paginationlinks {margin-top: 10px; border: 1px solid #eee; padding: 10px 10px 5px;}
+div#statistics {float: right; background-color: white; border-left: 1px solid #eee; padding-left: 10px; margin-left: 20px; font-size: 0.9em;}
+div.listingblock {float: left; width: 22%; margin-right: 20px;}
+
+/* Film listing */
+#filmrolls {clear: both;}
+ul.splitlist4 {-moz-column-count: 6;
+    -moz-column-gap: 20px;
+    -webkit-column-count: 7;
+    -webkit-column-gap: 20px;
+    column-count: 7;
+    column-gap: 20px;}
+#droplist {position: relative; top: -20px; float: right;}
+#filmlisting {float: right; width: 450px; margin-left: 20px; max-height: 650px; overflow-y: scroll;}
+
+/* Mobile styles; see: https://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions */
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+	body.home .overlay {width: auto;}
+}
