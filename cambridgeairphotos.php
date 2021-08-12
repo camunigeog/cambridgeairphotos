@@ -1002,6 +1002,7 @@ class cambridgeairphotos extends frontControllerApplication
 		# Determine constraints
 		$constraintsSql = 'subject LIKE :subject1 AND subject REGEXP :subject2';	// Use of LIKE first is an optimisation to minimise the dataset first to avoid a Slow Query
 		$preparedStatementValues = array (
+			'match' => '%type',		// NB Will be used only if the type has words >3 characters
 			'subject1' => '%' . '%type' . '%',
 			'subject2' => '\\b' . '%type' . '\\b',	// MySQL8 uses \\b rather than [[:<:]] and [[:>:]] https://stackoverflow.com/a/60906360
 		);		// %type gets substituted below
@@ -1082,6 +1083,27 @@ class cambridgeairphotos extends frontControllerApplication
 		
 		# Substitute prepared statement placeholders
 		foreach ($preparedStatementValues as $field => $string) {
+			
+			# Special-case match optimisation; this adds in a MATCH AGAINST statement in MySQL at the start of the query; must contain at least one word that is long enough
+			if ($field == 'match') {
+				$hasLongEnoughWord = false;
+				$words = explode (' ', $type);
+				foreach ($words as $word) {
+					if (mb_strlen (trim ($word)) > 3) {		// 3 is FULLTEXT minimum; if string has no words longer than this, the clause will return false, so no results
+						$hasLongEnoughWord = true;
+						break;
+					}
+				}
+				if ($hasLongEnoughWord) {
+					$constraintsSql = 'MATCH(subject) AGAINST (:match) AND ' . $constraintsSql;		// Prepend optimisation
+					$string = str_replace ('%type', $type, $string);
+				} else {
+					unset ($preparedStatementValues[$field]);
+					continue;
+				}
+			}
+			
+			# Normal query replacements
 			$string = str_replace ('%%type%', "%{$type}%", $string);
 			$string = str_replace ('\\b%type\\b', "\\b{$type}\\b", $string);	// Regexp with word boundary version
 			if ($idLookups) {
