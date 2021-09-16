@@ -46,5 +46,7 @@ Martin Lucas-Smith, Department of Geography, University of Cambridge, 2011-21.
 License
 -------
 
-GPL3.
+Code licensed GPL3.
+
+Image licensing - please contact the Department.
 
