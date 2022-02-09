@@ -129,6 +129,63 @@ class cambridgeairphotos extends frontControllerApplication
 	}
 	
 	
+	# Database structure definition
+	public function databaseStructure ()
+	{
+		return "
+			
+			-- Main data table, populated during import
+			CREATE TABLE IF NOT EXISTS `cucap` (
+			  `id` varchar(11) NOT NULL COMMENT 'Catalogue ID',
+			  `natsort` int NOT NULL,
+			  `type` enum('Oblique','Vertical') NOT NULL,
+			  `photoDate` date DEFAULT NULL,
+			  `photoTime` varchar(8) DEFAULT NULL,
+			  `subject` varchar(255) DEFAULT NULL,
+			  `featuredId` int DEFAULT NULL COMMENT 'Featured item?',
+			  `copyright` varchar(255) NOT NULL COMMENT 'Copyright owner',
+			  `filmRollNumber` varchar(255) DEFAULT NULL,
+			  `photoNumberInFilm` varchar(255) DEFAULT NULL,
+			  `cameraType` varchar(10) DEFAULT NULL,
+			  `osMapSheet` varchar(255) DEFAULT NULL,
+			  `coverTrac` varchar(8) DEFAULT NULL,
+			  `mapScale` varchar(7) DEFAULT NULL,
+			  `photoType` varchar(255) DEFAULT NULL,
+			  `viewDirection` varchar(5) DEFAULT NULL,
+			  `centDist` double DEFAULT NULL,
+			  `cloudCover` varchar(27) DEFAULT NULL,
+			  `gridSquare` varchar(255) DEFAULT NULL,
+			  `gridReference` varchar(255) DEFAULT NULL,
+			  `filmType` varchar(44) DEFAULT NULL,
+			  `eastings` varchar(10) DEFAULT NULL COMMENT 'Eastings (assembled)',
+			  `northings` varchar(11) DEFAULT NULL COMMENT 'Northings (assembled)',
+			  `gridSystem` enum('uk','irish') NOT NULL,
+			  `longitude` float(11,6) DEFAULT NULL COMMENT 'Longitude (looked up)',
+			  `latitude` float(10,6) DEFAULT NULL COMMENT 'Latitude (looked up)',
+			  `lonLat` point NOT NULL
+			) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+			
+			-- Featured themes
+			CREATE TABLE IF NOT EXISTS `featured` (
+			  `id` int NOT NULL AUTO_INCREMENT COMMENT 'Automatic key',
+			  `name` varchar(255) NOT NULL COMMENT 'Theme',
+			  `moniker` varchar(255) NOT NULL COMMENT 'URL moniker',
+			  `coverId` varchar(11) NOT NULL COMMENT 'Cover item ID',
+			  PRIMARY KEY (`id`)
+			) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Featured themes';
+			
+			-- Themes
+			CREATE TABLE IF NOT EXISTS `themes` (
+			  `id` int NOT NULL AUTO_INCREMENT COMMENT 'Automatic key',
+			  `theme` varchar(255) NOT NULL COMMENT 'Theme',
+			  `total` int NOT NULL COMMENT 'Total',
+			  PRIMARY KEY (`id`)
+			) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+		";
+	}
+	
+	
+	
 	# Additional processing
 	function main ()
 	{
