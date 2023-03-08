@@ -1459,7 +1459,7 @@ class cambridgeairphotos extends frontControllerApplication
 			foreach ($data['themes'] as $theme => $link) {
 				$themes[] = "<a href=\"{$link}\">" . htmlspecialchars ($theme) . '</a>';
 			}
-			$html .= "\n<p class=\"themes\">Browse more in theme: " . implode ($themes, ' ') . '</p>';
+			$html .= "\n<p class=\"themes\">Browse more in theme: " . implode (' ', $themes) . '</p>';
 		}
 		
 		# More nearby
