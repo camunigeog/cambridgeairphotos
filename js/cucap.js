@@ -82,9 +82,11 @@ var telluswhere = (function ($) {
 				var cookieLocationString = telluswhere.readCookie('centerLngLatZoom');
 				if(cookieLocationString) {
 					var cookieLocation = cookieLocationString.split(',');
-					_initialLongitude = cookieLocation[0];
-					_initialLatitude = cookieLocation[1];
-					_initialZoom = cookieLocation[2];
+					if (cookieLocation[0] != '' && cookieLocation[1] != '') {
+						_initialLongitude = cookieLocation[0];
+						_initialLatitude = cookieLocation[1];
+						_initialZoom = cookieLocation[2];
+					}
 				}
 			}
 			

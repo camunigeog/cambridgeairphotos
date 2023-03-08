@@ -314,11 +314,13 @@ class cambridgeairphotos extends frontControllerApplication
 		# Check for cookie
 		if ($_COOKIE && isSet ($_COOKIE['centerLngLatZoom'])) {
 			list ($longitude, $latitude, $zoom) = explode (',', $_COOKIE['centerLngLatZoom'], 3);
-			$mapLocation = array (
-				'latitude'	=> $latitude,
-				'longitude'	=> $longitude,
-				'zoom'		=> $zoom,
-			);
+			if ($longitude != '' && $latitude != '') {		// Deal with broken cookie scenario
+				$mapLocation = array (
+					'latitude'	=> $latitude,
+					'longitude'	=> $longitude,
+					'zoom'		=> $zoom,
+				);
+			}
 		}
 		
 		# If a selected ID is supplied, look up its location
