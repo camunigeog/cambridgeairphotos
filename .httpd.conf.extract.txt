@@ -25,11 +25,11 @@
 	RewriteRule ^$baseUrl/(map|about|search|listing|import)/$ $baseUrl/index.html?action=$1 [L,QSA]
 	RewriteRule ^$baseUrl/(contacts)/$ $baseUrl/index.html?action=feedback [L,QSA]
 	RedirectMatch permanent ^$baseUrl/(map|about|search|beta|listing|import|contacts)$ $baseUrl/$1/
-	RewriteRule "^$baseUrl/location/([- /a-z0-9]+)/$" $baseUrl/index.html?action=location&runpage=view&id=$1 [L,QSA]
-	RewriteRule "^$baseUrl/location/([- /a-z0-9]+)/update.html$" $baseUrl/index.html?action=location&runpage=update&id=$1 [L,QSA]
+	RewriteRule "^$baseUrl/location/([- /a-z0-9]+)/$" $baseUrl/index.html?action=location&runpage=view&id=$1 [L,QSA,B]
+	RewriteRule "^$baseUrl/location/([- /a-z0-9]+)/update.html$" $baseUrl/index.html?action=location&runpage=update&id=$1 [L,QSA,B]
 	RedirectMatch Permanent "^$baseUrl/location/([- /a-z0-9]+)$" $baseUrl/location/$1/
 	# NB \1 is a backreference in the test
-	RewriteRule "^$baseUrl/location/([- /a-z0-9]+)/\1-size([0-9]+).jpg$" $baseUrl/data/thumbnails/$2/$1.jpg [L,QSA]
+	RewriteRule "^$baseUrl/location/([- /a-z0-9]+)/\1-size([0-9]+).jpg$" $baseUrl/data/thumbnails/$2/$1.jpg [L,QSA,B]
 	RewriteRule ^$baseUrl/search/page([1-9][0-9]*)\.html$ $baseUrl/index.html?action=search&page=$1 [L,QSA]
 	
 	# Search
