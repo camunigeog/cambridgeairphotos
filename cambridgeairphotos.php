@@ -820,9 +820,7 @@ class cambridgeairphotos extends frontControllerApplication
 			'recordLink'						=> $this->baseUrl . '/map/?lat=%latitude&lon=%longitude&zoom=14&id=%lower(id)',
 			//'recordLink'						=> $this->baseUrl . '/location/%lower(id)/',
 			'geographicSearchEnabled'			=> 'loc_json',
-			#!# NB Needs an upstream fix - currently doesn't result in the visible panel changing also
-			'geographicSearchMapUrl'			=> $this->baseUrl . '/',
-			//'geographicSearchMapUrl'			=> $this->baseUrl . '/?mode=draw',
+			'geographicSearchMapUrl'			=> $this->baseUrl . '/map/?mode=draw',
 			'geographicSearchField'				=> 'lonLat',	// #!# Rename this to 'geometry' in the database
 			'searchResultsMaximumLimit'			=> 2500,
 			'enumRadiobuttons'					=> 2,
