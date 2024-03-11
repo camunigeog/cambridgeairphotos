@@ -1938,7 +1938,7 @@ class cambridgeairphotos extends frontControllerApplication
 		
 		# Load the importer
 		require_once ('import/import.php');
-		$cucapImport = new cucapImport ($this->settings, $this->databaseConnection, $this->applicationRoot);
+		$cucapImport = new cucapImport ($this->settings, $this->applicationRoot);
 		$stages = $cucapImport->getStages ();
 		
 		# Create the form
