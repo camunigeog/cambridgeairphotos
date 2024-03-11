@@ -3,15 +3,10 @@
 # Load using:
 #	# Cambridge air photos
 #	Include /path/to/cambridgeairphotos/.httpd.conf.extract.txt
-#	Use MacroTemplateApplication "" "/path/to/cambridgeairphotos" "/path/to/site/:/path/to/cambridgeairphotos/:/path/to/php/libraries/:/path/to/smarty/"
+#	Use MacroTemplateApplication "" "/path/to/cambridgeairphotos"
 
 
-<Macro MacroCambridgeairphotos $baseUrl $repoPath $includePath>
-	
-	# Include path
-	<Location $baseUrl/>
-		php_value include_path $includePath
-	</Location>
+<Macro MacroCambridgeairphotos $baseUrl $repoPath>
 	
 	# Output buffering
 	<Location $baseUrl/>

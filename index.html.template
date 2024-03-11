@@ -7,7 +7,7 @@ $settings = array (
 );
 
 # Load and run the catalogue viewer
-require_once ('cambridgeairphotos.php');
+require_once ('vendor/autoload.php');
 new cambridgeairphotos ($settings);
 
 ?>

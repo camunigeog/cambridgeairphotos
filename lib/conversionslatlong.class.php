@@ -1,4 +1,8 @@
 <?php
+
+# From https://github.com/geograph-project/geoportal/blob/master/includes/conversionslatlong.class.php
+
+
 /**
  * $Project: GeoGraph $
  * $Id$

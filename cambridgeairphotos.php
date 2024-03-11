@@ -1,7 +1,6 @@
 <?php
 
 # Cambridge air photos
-require_once ('frontControllerApplication.php');
 class cambridgeairphotos extends frontControllerApplication
 {
 	# Function to assign defaults additional to the general application defaults
@@ -585,7 +584,6 @@ class cambridgeairphotos extends frontControllerApplication
 		}
 		
 		# Arrange as GeoJSON layout
-		require_once ('geojsonRenderer.class.php');
 		$geojsonRenderer = new geojsonRenderer ();
 		foreach ($pois as $id => $poi_row) {
 			
@@ -830,7 +828,6 @@ class cambridgeairphotos extends frontControllerApplication
 		);
 		
 		# Load and run the multisearch facility
-		require_once ('multisearch.php');
 		$multisearch = new multisearch ($settings);
 		$html = $multisearch->getHtml ();
 		
@@ -1181,7 +1178,6 @@ class cambridgeairphotos extends frontControllerApplication
 		;";
 		
 		# Get data for this page
-		require_once ('pagination.php');
 		$pagination = new pagination ($this->settings, $this->baseUrl);
 		list ($data, $totalAvailable, $totalPages, $page, $actualMatchesReachedMaximum) = $this->databaseConnection->getDataViaPagination ($query, false, true, $preparedStatementValues, array (), $paginationRecordsPerPage, $page);
 		
@@ -1534,7 +1530,6 @@ class cambridgeairphotos extends frontControllerApplication
 	public function updateRecord ($id, $data)
 	{
 		# Convert eastings/northings
-		require_once ('conversionslatlong.class.php');
 		$conversionsLatLong = new ConversionsLatLong;
 		list ($data['latitude'], $data['longitude']) = $conversionsLatLong->osgb36_to_wgs84 ($data['eastings'], $data['northings']);
 		
@@ -1787,9 +1782,6 @@ class cambridgeairphotos extends frontControllerApplication
 					unset ($data[$id]);
 				}
 			}
-			
-			# Load GeoJSON conversion support
-			require_once ('geojsonRenderer.class.php');
 			
 			# Arrange data as GeoJSON points, which will show the photo locations
 			$geojsonRenderer = new geojsonRenderer ();

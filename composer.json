@@ -1,0 +1,17 @@
+{
+    "name": "camunigeography/cambridgeairphotos",
+    "description": "Cambridge air photos website",
+    "type": "project",
+    "license": "GPL-3.0-only",
+    "minimum-stability": "stable",
+    "require": {
+        "libpurecontent/frontcontrollerapplication": "^1.13",
+        "libpurecontent/multisearch": "^1.3",
+        "libpurecontent/pagination": "^1.1",
+        "libpurecontent/application": "^1.9",
+        "libpurecontent/ultimateform": "^1.29"
+    },
+    "autoload": {
+        "files": ["cambridgeairphotos.php", "geojsonRenderer.class.php", "lib/conversionslatlong.class.php"]
+    }
+}
