@@ -13,6 +13,7 @@ class cambridgeairphotos extends frontControllerApplication
 			'table' => 'cucap',
 			'useTemplating' => true,
 			'div' => 'cucap',
+			'administrators' => true,
 			'defaultLongitude' => 0.1225,
 			'defaultLatitude' => 52.208056,
 			'defaultZoom' => 7,
