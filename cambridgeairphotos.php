@@ -163,7 +163,7 @@ class cambridgeairphotos extends frontControllerApplication
 			  `longitude` float(11,6) DEFAULT NULL COMMENT 'Longitude (looked up)',
 			  `latitude` float(10,6) DEFAULT NULL COMMENT 'Latitude (looked up)',
 			  `lonLat` point NOT NULL
-			) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+			) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 			
 			-- Featured themes
 			CREATE TABLE IF NOT EXISTS `featured` (
@@ -172,7 +172,7 @@ class cambridgeairphotos extends frontControllerApplication
 			  `moniker` varchar(255) NOT NULL COMMENT 'URL moniker',
 			  `coverId` varchar(11) NOT NULL COMMENT 'Cover item ID',
 			  PRIMARY KEY (`id`)
-			) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Featured themes';
+			) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Featured themes';
 			
 			-- Themes
 			CREATE TABLE IF NOT EXISTS `themes` (
@@ -180,7 +180,7 @@ class cambridgeairphotos extends frontControllerApplication
 			  `theme` varchar(255) NOT NULL COMMENT 'Theme',
 			  `total` int NOT NULL COMMENT 'Total',
 			  PRIMARY KEY (`id`)
-			) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+			) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 		";
 	}
 	
